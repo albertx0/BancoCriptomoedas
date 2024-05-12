@@ -1,25 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package bancocriptomoedas;
 
-import view.JanelaDeposito;
+import DAO.Conexao;
+import java.sql.Connection;
+import java.sql.SQLException;
 import view.JanelaLogin;
-import view.JanelaMenu;
 
-/**
- *
- * @author albert
- */
 public class BancoCriptomoedas {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        JanelaLogin j = new JanelaLogin();
-        j.setVisible(true);
-    }
-    
+        Conexao conexaoDAO = new Conexao();
+        
+        try{
+            Connection conexao = conexaoDAO.getConnection();
+            conexao.close();
+            JanelaLogin janela = new JanelaLogin();
+            janela.setVisible(true);
+        } catch (SQLException e){
+            System.out.println("Erro ao conectar ao banco de dados:");
+            e.printStackTrace();
+        }
+    }   
 }
