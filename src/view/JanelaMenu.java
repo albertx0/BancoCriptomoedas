@@ -4,27 +4,23 @@
  */
 package view;
 
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import model.Carteira;
 import model.Usuario;
-
+import controller.ControllerMenu;
+import model.Investidor;
 /**
  *
  * @author albert
  */
 public class JanelaMenu extends javax.swing.JFrame {
     
-    public JanelaMenu(Usuario usuario) {
+    public JanelaMenu(Investidor investidor) {
         initComponents();
-        this.usuario = usuario;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+        this.investidor = investidor;
+        control = new ControllerMenu(this , investidor);
     }
 
     public JButton getBtAtualizar() {
@@ -244,7 +240,7 @@ public class JanelaMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSaldoActionPerformed
-        // TODO add your handling code here:
+       control.consultarSaldo();
     }//GEN-LAST:event_btSaldoActionPerformed
 
     private void btExtratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExtratoActionPerformed
@@ -252,7 +248,7 @@ public class JanelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btExtratoActionPerformed
 
     private void btDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDepositarActionPerformed
-        // TODO add your handling code here:
+        control.depositarReal();
     }//GEN-LAST:event_btDepositarActionPerformed
 
     private void btSacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSacarActionPerformed
@@ -272,7 +268,7 @@ public class JanelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btVenderActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
-        // TODO add your handling code here:
+        //Codigo sair   
     }//GEN-LAST:event_btSairActionPerformed
 
     /**
@@ -309,7 +305,10 @@ public class JanelaMenu extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-    private Usuario usuario;
+    
+    
+    private Investidor investidor;
+    private ControllerMenu control;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAtualizar;
     private javax.swing.JButton btComprar;

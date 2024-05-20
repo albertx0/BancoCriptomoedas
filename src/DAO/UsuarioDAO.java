@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
+import model.Carteira;
+import model.Investidor;
 import model.Usuario;
 
 /**
@@ -21,7 +23,7 @@ public class UsuarioDAO {
         this.conn = conn;
     }
     
-    public ResultSet consultar(Usuario usuario) throws SQLException {
+    public Investidor consultarUsuario(Usuario usuario) throws SQLException {
         String sql = "SELECT * FROM usuario WHERE cpf = ? AND senha = ?";
         PreparedStatement statement = conn.prepareStatement(sql);
         
@@ -30,8 +32,20 @@ public class UsuarioDAO {
         statement.execute();
         
         ResultSet resultado = statement.getResultSet();
-           
-        conn.close();
-        return resultado;
+        
+        if(resultado.next()){
+            String nome = resultado.getString("nome");
+            String sobrenome = resultado.getString("sobrenome");
+            String cpf = resultado.getString("cpf");
+            String senha = resultado.getString("senha");
+            
+            Investidor investidor = new Investidor(nome , sobrenome , cpf ,
+                    senha , null); 
+            
+            return investidor;
+        }
+        
+        
+        return null;
     }
 }

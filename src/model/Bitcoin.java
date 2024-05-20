@@ -10,7 +10,7 @@ package model;
  */
 public class Bitcoin extends Moedas implements Tarifacao{
     
-    public Bitcoin(double preco , double valor , double taxaVenda , double taxaCompra){
+    public Bitcoin(double preco , double valor){
         super("btc" , preco , valor);
     }
     

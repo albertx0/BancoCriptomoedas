@@ -1,4 +1,4 @@
-/*
+    /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -6,14 +6,21 @@ package controller;
 
 import DAO.UsuarioDAO;
 import DAO.Conexao;
+import DAO.PrecoCriptoDAO;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import model.Bitcoin;
+import model.Carteira;
+import model.Ethereum;
+import model.Ripple;
 import model.Usuario;
 import view.JanelaLogin;
 import view.JanelaMenu;
-
+import controller.ControllerConsultarSaldo;
+import model.Investidor;
+import model.Real;
 /**
  *
  * @author albert
@@ -35,23 +42,21 @@ public class ControllerLogin {
         try {
             Connection connection = conn.getConnection();
             UsuarioDAO usuarioDAO = new UsuarioDAO(connection);
-            ResultSet resultado = usuarioDAO.consultar(usuario);
             
-            if(resultado.next()){
+            Investidor investidor = usuarioDAO.consultarUsuario(usuario);
+
+            if(investidor != null){
                 JOptionPane.showMessageDialog(null , "Login feito com sucesso !");
-                String nome = resultado.getString("nome");
-                String sobrenome = resultado.getString("sobrenome");
-//                double saldoReal = resultado.getDouble("saldoreal");
-//                double saldoBTC = resultado.getDouble("saldobtc");
-//                double saldoETH = resultado.getDouble("saldoeth");
-//                double saldoXRP = resultado.getDouble("saldoxrp");
                 
-                //Moedas moedas = new Moedas();
+                PrecoCriptoDAO precos = new PrecoCriptoDAO(connection);
+                precos.consultarPreco(investidor);
                 
-                JanelaMenu menu = new JanelaMenu(usuario);
-                menu.setVisible(true);
+                JanelaMenu menu = new JanelaMenu(investidor);
+                
+                login.setVisible(false);
             }else{
-                JOptionPane.showMessageDialog(null , "Erro ao entrar, CPF ou senha incorretos...");
+                JOptionPane.showMessageDialog(null , 
+                        "Erro ao entrar, CPF ou senha incorretos...");
             }
         } catch (SQLException e){
             e.printStackTrace();
