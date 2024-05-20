@@ -4,6 +4,12 @@
  */
 package view;
 
+import controller.ControllerDeposito;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import model.Investidor;
+
 /**
  *
  * @author albert
@@ -13,10 +19,54 @@ public class JanelaDeposito extends javax.swing.JFrame {
     /**
      * Creates new form JanelaDeposito
      */
-    public JanelaDeposito() {
+    public JanelaDeposito(Investidor investidor) {
         initComponents();
+        this.investidor = investidor;
+        control = new ControllerDeposito(this , investidor);
     }
 
+    public JButton getBtContinuar() {
+        return btContinuar;
+    }
+
+    public void setBtContinuar(JButton btContinuar) {
+        this.btContinuar = btContinuar;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public void setjLabel2(JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    public JLabel getLblRecepcao() {
+        return lblRecepcao;
+    }
+
+    public void setLblRecepcao(JLabel lblRecepcao) {
+        this.lblRecepcao = lblRecepcao;
+    }
+
+    public JTextField getTxtDeposito() {
+        return txtDeposito;
+    }
+
+    public void setTxtDeposito(JTextField txtDeposito) {
+        this.txtDeposito = txtDeposito;
+    }
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -97,7 +147,7 @@ public class JanelaDeposito extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDepositoActionPerformed
 
     private void btContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btContinuarActionPerformed
-        // TODO add your handling code here:
+        control.deposito();
     }//GEN-LAST:event_btContinuarActionPerformed
 
     /**
@@ -134,7 +184,9 @@ public class JanelaDeposito extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-
+    
+    private ControllerDeposito control;
+    private Investidor investidor;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btContinuar;
     private javax.swing.JLabel jLabel1;

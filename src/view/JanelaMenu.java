@@ -4,19 +4,99 @@
  */
 package view;
 
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import model.Carteira;
+import model.Usuario;
+import controller.ControllerMenu;
+import model.Investidor;
 /**
  *
  * @author albert
  */
 public class JanelaMenu extends javax.swing.JFrame {
-
-    /**
-     * Creates new form JanelaMenu
-     */
-    public JanelaMenu() {
+    
+    public JanelaMenu(Investidor investidor) {
         initComponents();
+        this.investidor = investidor;
+        control = new ControllerMenu(this , investidor);
     }
 
+    public JButton getBtAtualizar() {
+        return btAtualizar;
+    }
+
+    public void setBtAtualizar(JButton btAtualizar) {
+        this.btAtualizar = btAtualizar;
+    }
+
+    public JButton getBtComprar() {
+        return btComprar;
+    }
+
+    public void setBtComprar(JButton btComprar) {
+        this.btComprar = btComprar;
+    }
+
+    public JButton getBtDepositar() {
+        return btDepositar;
+    }
+
+    public void setBtDepositar(JButton btDepositar) {
+        this.btDepositar = btDepositar;
+    }
+
+    public JButton getBtExtrato() {
+        return btExtrato;
+    }
+
+    public void setBtExtrato(JButton btExtrato) {
+        this.btExtrato = btExtrato;
+    }
+
+    public JButton getBtSacar() {
+        return btSacar;
+    }
+
+    public void setBtSacar(JButton btSacar) {
+        this.btSacar = btSacar;
+    }
+
+    public JButton getBtSair() {
+        return btSair;
+    }
+
+    public void setBtSair(JButton btSair) {
+        this.btSair = btSair;
+    }
+
+    public JButton getBtSaldo() {
+        return btSaldo;
+    }
+
+    public void setBtSaldo(JButton btSaldo) {
+        this.btSaldo = btSaldo;
+    }
+
+    public JButton getBtVender() {
+        return btVender;
+    }
+
+    public void setBtVender(JButton btVender) {
+        this.btVender = btVender;
+    }
+
+    public JLabel getLblRecepcao() {
+        return lblRecepcao;
+    }
+
+    public void setLblRecepcao(JLabel lblRecepcao) {
+        this.lblRecepcao = lblRecepcao;
+    }
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -160,7 +240,7 @@ public class JanelaMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSaldoActionPerformed
-        // TODO add your handling code here:
+       control.consultarSaldo();
     }//GEN-LAST:event_btSaldoActionPerformed
 
     private void btExtratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExtratoActionPerformed
@@ -168,7 +248,7 @@ public class JanelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btExtratoActionPerformed
 
     private void btDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDepositarActionPerformed
-        // TODO add your handling code here:
+        control.depositarReal();
     }//GEN-LAST:event_btDepositarActionPerformed
 
     private void btSacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSacarActionPerformed
@@ -188,7 +268,7 @@ public class JanelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btVenderActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
-        // TODO add your handling code here:
+        //Codigo sair   
     }//GEN-LAST:event_btSairActionPerformed
 
     /**
@@ -225,7 +305,10 @@ public class JanelaMenu extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-
+    
+    
+    private Investidor investidor;
+    private ControllerMenu control;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAtualizar;
     private javax.swing.JButton btComprar;

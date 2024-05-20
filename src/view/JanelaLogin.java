@@ -4,6 +4,12 @@
  */
 package view;
 
+import controller.ControllerLogin;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
 /**
  *
  * @author albert
@@ -15,8 +21,67 @@ public class JanelaLogin extends javax.swing.JFrame {
      */
     public JanelaLogin() {
         initComponents();
+        control = new ControllerLogin(this);
     }
 
+    public JButton getBtEntrar() {
+        return btEntrar;
+    }
+
+    public void setBtEntrar(JButton btEntrar) {
+        this.btEntrar = btEntrar;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public void setjLabel2(JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    public JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    public void setjLabel3(JLabel jLabel3) {
+        this.jLabel3 = jLabel3;
+    }
+
+    public JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    public void setjLabel4(JLabel jLabel4) {
+        this.jLabel4 = jLabel4;
+    }
+
+    public JTextField getTxtCPF() {
+        return txtCPF;
+    }
+
+    public void setTxtCPF(JTextField txtCPF) {
+        this.txtCPF = txtCPF;
+    }
+
+    public JPasswordField getTxtSenha() {
+        return txtSenha;
+    }
+
+    public void setTxtSenha(JPasswordField txtSenha) {
+        this.txtSenha = txtSenha;
+    }
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -112,7 +177,7 @@ public class JanelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCPFActionPerformed
 
     private void btEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarActionPerformed
-        // TODO add your handling code here:
+        control.login();
     }//GEN-LAST:event_btEntrarActionPerformed
 
     /**
@@ -149,7 +214,8 @@ public class JanelaLogin extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-
+    
+    private ControllerLogin control;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btEntrar;
     private javax.swing.JLabel jLabel1;
