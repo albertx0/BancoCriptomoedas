@@ -54,20 +54,17 @@ public class ControllerConsultarSaldo {
         if(senhaTxt.equals(investidor.getSenha())){
             
             String textoSaldo = "Nome: " + investidor.getNome() + " " 
-                    + investidor.getSobrenome() + "\n" +
-                    "CPF: " + investidor.getCpf() + "\n\n" +
-                    "Reais: " + investidor
-                            .getCarteira().getMoedas()
-                            .get(3).getValor()+ "\n" +
-                    "Bitcoin: " + investidor
-                            .getCarteira().getMoedas()
-                            .get(0).getValor() + "\n" +
-                    "Ethereum: " + investidor
-                            .getCarteira().getMoedas()
-                            .get(1).getValor() + "\n" +
-                    "Ripple: " + investidor
-                            .getCarteira().getMoedas()
-                            .get(2).getValor() + "\n";
+                + investidor.getSobrenome() + "\n" +
+                "CPF: " + investidor.getCpf() + "\n\n" +
+                "Reais: " + investidor
+                        .getCarteira()
+                        .getReal().getValor()+ "\n" +
+                "Bitcoin: " + investidor
+                        .getCarteira().getBitcoin().getValor() + "\n" +
+                "Ethereum: " + investidor
+                        .getCarteira().getEthereum().getValor() + "\n" +
+                "Ripple: " + investidor
+                        .getCarteira().getRipple().getValor() + "\n";
             exibicao.getTxtSaldo().setText(textoSaldo);
         }else{
             JOptionPane.showMessageDialog(null 

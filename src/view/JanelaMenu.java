@@ -252,7 +252,7 @@ public class JanelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btDepositarActionPerformed
 
     private void btSacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSacarActionPerformed
-        // TODO add your handling code here:
+        control.sacarReal();
     }//GEN-LAST:event_btSacarActionPerformed
 
     private void btComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btComprarActionPerformed

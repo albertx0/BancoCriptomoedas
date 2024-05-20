@@ -11,21 +11,47 @@ import java.util.ArrayList;
  * @author albert
  */
 public class Carteira {
-    private ArrayList<Moedas> moedas = new ArrayList<>();
+    private Real real;
+    private Bitcoin bitcoin;
+    private Ethereum ethereum;
+    private Ripple ripple;
 
-    public ArrayList<Moedas> getMoedas() {
-        return moedas;
+    public Real getReal() {
+        return real;
     }
 
-    public void setMoedas(ArrayList<Moedas> moedas) {
-        this.moedas = moedas;
+    public void setReal(Real real) {
+        this.real = real;
     }
 
-    public Carteira() {
-        this.moedas = new ArrayList<>();
+    public Bitcoin getBitcoin() {
+        return bitcoin;
     }
-    
-    public void adicionarMoeda(Moedas moeda){
-        this.moedas.add(moeda);
+
+    public void setBitcoin(Bitcoin bitcoin) {
+        this.bitcoin = bitcoin;
+    }
+
+    public Ethereum getEthereum() {
+        return ethereum;
+    }
+
+    public void setEthereum(Ethereum ethereum) {
+        this.ethereum = ethereum;
+    }
+
+    public Ripple getRipple() {
+        return ripple;
+    }
+
+    public void setRipple(Ripple ripple) {
+        this.ripple = ripple;
+    }
+
+    public Carteira(Real real, Bitcoin bitcoin, Ethereum ethereum, Ripple ripple) {
+        this.real = real;
+        this.bitcoin = bitcoin;
+        this.ethereum = ethereum;
+        this.ripple = ripple;
     }
 }

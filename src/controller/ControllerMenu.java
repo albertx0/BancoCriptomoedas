@@ -8,6 +8,7 @@ import model.Investidor;
 import view.JanelaConsultarSaldo;
 import view.JanelaDeposito;
 import view.JanelaMenu;
+import view.JanelaSaque;
 
 /**
  *
@@ -39,5 +40,9 @@ public class ControllerMenu {
     public void depositarReal(){
         JanelaDeposito depositarReal = new JanelaDeposito(investidor);
         depositarReal.setVisible(true);
+    }
+    public void sacarReal(){
+        JanelaSaque sacarReal = new JanelaSaque(investidor);
+        sacarReal.setVisible(true);
     }
 }

@@ -44,40 +44,36 @@ public class PrecoCriptoDAO {
        
        ResultSet resultadoUsuario = statement.getResultSet();
        
-       investidor.setCarteira(new Carteira());
+       Real real = null;
+       Bitcoin bitcoin = null;
+       Ethereum ethereum = null;
+       Ripple ripple = null;
        
        if(resultadoUsuario.next()){
        while(resultado.next()){
            String nomeCripto = resultado.getString("nome");
            double preco = resultado.getDouble("preco");
            double saldo = resultadoUsuario.getDouble("saldo" + nomeCripto);
-           System.out.println(saldo);
+           
            switch(nomeCripto){
                
                case "real":
-                   System.out.println("0");
-                   Real real = new Real(preco , saldo);
-                   investidor.getCarteira().getMoedas().add(real);
+                   real = new Real(preco , saldo);
                    break;
                case "bitcoin":
-                   System.out.println("1");
-                   Bitcoin bitcoin = new Bitcoin(preco , saldo);
-                   investidor.getCarteira().getMoedas().add(bitcoin);
+                   bitcoin = new Bitcoin(preco , saldo);
                    break;
                case "ethereum":
-                   System.out.println("2");
-                   Ethereum ethereum = new Ethereum(preco, saldo);
-                   investidor.getCarteira().getMoedas().add(ethereum);
+                   ethereum = new Ethereum(preco, saldo);
                    break;
                case "ripple":
-                   System.out.println("3");
-                   Ripple ripple = new Ripple(preco , saldo);
-                   investidor.getCarteira().getMoedas().add(ripple);
+                   ripple = new Ripple(preco , saldo);
                    break;
                
            }
        }
-       }
+    }
+       investidor.setCarteira(new Carteira(real , bitcoin , ethereum , ripple));
        conn.close();
    }
 }

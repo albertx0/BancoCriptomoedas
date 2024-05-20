@@ -32,7 +32,8 @@ public class DepositoDAO {
     
     public void depositar(Investidor investidor , double valorDeposito) throws SQLException{
         String cpf = investidor.getCpf();
-        String sql = "update usuario set saldoReal = saldoReal + ? where cpf = ?";
+        String sql = "UPDATE usuario set saldoReal = saldoReal + ? "
+                + "WHERE cpf = ?";
         
         PreparedStatement statement = conn.prepareStatement(sql);
         
@@ -40,6 +41,10 @@ public class DepositoDAO {
         statement.setString(2 , cpf);
         
         statement.execute();
+        
+        double saldoReal = investidor.getCarteira().getReal().getValor();
+        
+        investidor.getCarteira().getReal().setValor(saldoReal + valorDeposito);
         conn.close();
     }
 }
