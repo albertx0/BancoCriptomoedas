@@ -3,6 +3,7 @@ package bancocriptomoedas;
 import DAO.Conexao;
 import java.sql.Connection;
 import java.sql.SQLException;
+import view.Janela2ComprarCriptomoedas;
 import view.JanelaLogin;
 
 public class BancoCriptomoedas {
@@ -19,5 +20,6 @@ public class BancoCriptomoedas {
             System.out.println("Erro ao conectar ao banco de dados:");
             e.printStackTrace();
         }
+           
     }   
 }

@@ -5,6 +5,7 @@
 package controller;
 
 import model.Investidor;
+import view.Janela1ComprarCriptomoedas;
 import view.JanelaConsultarSaldo;
 import view.JanelaDeposito;
 import view.JanelaMenu;
@@ -44,5 +45,10 @@ public class ControllerMenu {
     public void sacarReal(){
         JanelaSaque sacarReal = new JanelaSaque(investidor);
         sacarReal.setVisible(true);
+    }
+    public void ComprarCriptomoedas(){
+        Janela1ComprarCriptomoedas janelaComprar= new Janela1ComprarCriptomoedas
+            (investidor);
+        janelaComprar.setVisible(true);        
     }
 }

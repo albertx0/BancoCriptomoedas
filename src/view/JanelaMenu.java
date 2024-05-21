@@ -256,7 +256,7 @@ public class JanelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btSacarActionPerformed
 
     private void btComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btComprarActionPerformed
-        // TODO add your handling code here:
+        control.ComprarCriptomoedas();
     }//GEN-LAST:event_btComprarActionPerformed
 
     private void btAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAtualizarActionPerformed

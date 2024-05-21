@@ -4,19 +4,88 @@
  */
 package view;
 
+import controller.ControllerComprarCriptomoedas;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPasswordField;
+import javax.swing.JScrollPane;
+import model.Investidor;
+
 /**
  *
  * @author albert
  */
-public class JanelaComprarCriptomoedas extends javax.swing.JFrame {
+public class Janela1ComprarCriptomoedas extends javax.swing.JFrame {
 
     /**
      * Creates new form JanelaComprarCriptomoedas
      */
-    public JanelaComprarCriptomoedas() {
+    public Janela1ComprarCriptomoedas(Investidor investidor) {
         initComponents();
+        this.investidor = investidor;
+        control = new ControllerComprarCriptomoedas
+        (this , investidor);
     }
 
+    public JButton getBtContinuar() {
+        return btContinuar;
+    }
+
+    public void setBtContinuar(JButton btContinuar) {
+        this.btContinuar = btContinuar;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    public void setjLabel3(JLabel jLabel3) {
+        this.jLabel3 = jLabel3;
+    }
+
+    public JList<String> getjList1() {
+        return jList1;
+    }
+
+    public void setjList1(JList<String> jList1) {
+        this.jList1 = jList1;
+    }
+
+    public JScrollPane getjScrollPane2() {
+        return jScrollPane2;
+    }
+
+    public void setjScrollPane2(JScrollPane jScrollPane2) {
+        this.jScrollPane2 = jScrollPane2;
+    }
+
+    public JLabel getLblRecepcao() {
+        return lblRecepcao;
+    }
+
+    public void setLblRecepcao(JLabel lblRecepcao) {
+        this.lblRecepcao = lblRecepcao;
+    }
+
+    public JPasswordField getTxtSenha() {
+        return txtSenha;
+    }
+
+    public void setTxtSenha(JPasswordField txtSenha) {
+        this.txtSenha = txtSenha;
+    }
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -100,7 +169,7 @@ public class JanelaComprarCriptomoedas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btContinuarActionPerformed
-        // TODO add your handling code here:
+        control.conferirSenha();
     }//GEN-LAST:event_btContinuarActionPerformed
 
     /**
@@ -137,7 +206,9 @@ public class JanelaComprarCriptomoedas extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-
+    
+    private ControllerComprarCriptomoedas control;
+    private Investidor investidor;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btContinuar;
     private javax.swing.JLabel jLabel1;
