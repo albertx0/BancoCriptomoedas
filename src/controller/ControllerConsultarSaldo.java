@@ -5,6 +5,7 @@
 package controller;
 
 import java.awt.BorderLayout;
+import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 import model.Carteira;
 import model.Investidor;
@@ -47,28 +48,30 @@ public class ControllerConsultarSaldo {
         exibicao = new JanelaVisualizarSaldo();
     }
     
-    public void consultarSaldo(){
+        public void consultarSaldo() {
         exibicao.setVisible(true);
         String senhaTxt = janela.getTxtSenha().getText();
-        
-        if(senhaTxt.equals(investidor.getSenha())){
-            
+
+        if (senhaTxt.equals(investidor.getSenha())) {
+            DecimalFormat formatoCripto = new DecimalFormat("#0.00000");
+            DecimalFormat formatoReal = new DecimalFormat("#0.00");
             String textoSaldo = "Nome: " + investidor.getNome() + " " 
                 + investidor.getSobrenome() + "\n" +
                 "CPF: " + investidor.getCpf() + "\n\n" +
-                "Reais: " + investidor
-                        .getCarteira()
-                        .getReal().getValor()+ "\n" +
-                "Bitcoin: " + investidor
-                        .getCarteira().getBitcoin().getValor() + "\n" +
-                "Ethereum: " + investidor
-                        .getCarteira().getEthereum().getValor() + "\n" +
-                "Ripple: " + investidor
-                        .getCarteira().getRipple().getValor() + "\n";
+                "Reais: " + formatoReal.format
+        (investidor.getCarteira().getReal().getValor()) + "\n" +
+                "Bitcoin: " + formatoCripto.format
+        (investidor.getCarteira().getBitcoin().getValor()) + "\n" +
+                "Ethereum: " + formatoCripto.format
+        (investidor.getCarteira().getEthereum().getValor()) + "\n" +
+                "Ripple: " + formatoCripto.format
+        (investidor.getCarteira().getRipple().getValor()) + "\n";
+
             exibicao.getTxtSaldo().setText(textoSaldo);
-        }else{
-            JOptionPane.showMessageDialog(null 
+        } else {
+            JOptionPane.showMessageDialog(null
                     , "Senha incorreta...");
         }
-    }
+}
+
 }
